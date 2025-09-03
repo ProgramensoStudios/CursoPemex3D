@@ -1,24 +1,29 @@
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
-public class CanvasInter : MonoBehaviour
+public class TextMeshFunctions : MonoBehaviour
 {
     public int selecter;
+    public int number = 0;
+
+    private string baseMessage = "Este es el mensaje base que programamos";
+    public string message;
+
+    public TextMeshProUGUI textNumber;
+    public TextMeshProUGUI textEditable;
 
     public Canvas interactCanvas;
-    public Slider sliderGlobal;
-    public Slider sliderLocal;
-    
+
     public PlayerInput playerInput;
     public InputAction interact;
-
-    private void Start()
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
     {
         interact = playerInput.actions.FindAction("Player/Interact");
     }
 
+    // Update is called once per frame
     void Update()
     {
         if (interact.ReadValue<float>() > 0)
@@ -26,29 +31,30 @@ public class CanvasInter : MonoBehaviour
             switch (selecter)
             {
                 case 0:
-                    sliderGlobal.value += 0.001f;
+                    number = int.Parse(textNumber.text);
+                    number += 1;
+                    textNumber.text = number.ToString();
                     break;
                 case 1:
-                    sliderGlobal.value -= 0.001f;
+                    number = int.Parse(textNumber.text);
+                    number -= 1;
+                    textNumber.text = number.ToString();
                     break;
                 case 2:
-                    sliderGlobal.value = 0.5f;
+                    number = 0;
+                    textNumber.text = number.ToString(); 
                     break;
                 case 3:
-                    sliderLocal.value += 0.001f;
+                    textEditable.text = baseMessage;
                     break;
                 case 4:
-                    sliderLocal.value -= 0.001f;
-                    break;
-                case 5:
-                    sliderLocal.value = 0.5f;
+                    textEditable.text = message;
                     break;
                 default:
                     Debug.Log("esta opcion no deberia existir que esta pasandooooooooooo");
                     break;
             }
         }
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -60,6 +66,4 @@ public class CanvasInter : MonoBehaviour
     {
         interactCanvas.enabled = false;
     }
-
-
 }
