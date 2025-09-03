@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CorrutinasScripts : MonoBehaviour
@@ -21,7 +23,9 @@ public class CorrutinasScripts : MonoBehaviour
         Instantiate(sphere, originSeconds.position, originSeconds.rotation);
         StartCoroutine(TiempoDeEsperaPorSegundos());
     }
-    
-   
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        StopCoroutine(TiempoDeEsperaPorSegundos());
+    }
 }
