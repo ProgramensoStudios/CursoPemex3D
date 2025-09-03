@@ -645,7 +645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selecter: 4
   number: 0
-  message: Hola aqui puedes ditar tu mensaje
+  message: Hola aqui puedes editar tu mensaje
   textNumber: {fileID: 2126185776}
   textEditable: {fileID: 64258843}
   interactCanvas: {fileID: 101498315}

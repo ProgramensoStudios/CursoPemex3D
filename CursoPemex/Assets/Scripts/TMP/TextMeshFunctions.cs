@@ -20,7 +20,10 @@ public class TextMeshFunctions : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        number = 0;
+        textNumber.text = number.ToString();
         interact = playerInput.actions.FindAction("Player/Interact");
+        enabled = false;
     }
 
     // Update is called once per frame
