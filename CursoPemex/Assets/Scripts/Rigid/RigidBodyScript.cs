@@ -12,8 +12,11 @@ public class RigidBodyScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        rigidBody.linearVelocity = Vector3.zero;
-        transform.position = originalPosition.position;
-        transform.rotation = originalPosition.rotation;
+        if (other.gameObject.tag == "SpherePosition")
+        {
+            rigidBody.linearVelocity = Vector3.zero;
+            transform.position = originalPosition.position;
+            transform.rotation = originalPosition.rotation;
+        }
     }
 }
