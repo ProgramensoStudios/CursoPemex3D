@@ -2,16 +2,23 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public AudioSource mainAudio;
+    public AudioSource efectsoundAudio;
+
+    public void AddSound()
     {
-        
+        mainAudio.volume += 0.001f;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RestSound()
     {
-        
+        mainAudio.volume -= 0.001f;
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        efectsoundAudio.Stop(); 
+        efectsoundAudio.clip = clip;
+        efectsoundAudio.Play();
     }
 }
